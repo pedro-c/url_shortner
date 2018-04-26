@@ -1,5 +1,5 @@
 defmodule UrlShortenerWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :UrlShortener
+  use Phoenix.Endpoint, otp_app: :url_shortener
 
   socket "/socket", UrlShortenerWeb.UserSocket
 
@@ -8,7 +8,7 @@ defmodule UrlShortenerWeb.Endpoint do
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :UrlShortener, gzip: true,
+    at: "/", from: :url_shortener, gzip: true,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,7 +35,7 @@ defmodule UrlShortenerWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_UrlShortener_key",
+    key: "_url_shortener_key",
     signing_salt: "U9/UNcn1"
 
   plug UrlShortenerWeb.Router

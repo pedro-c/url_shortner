@@ -1,5 +1,5 @@
 defmodule UrlShortener.Repo do
-  use Ecto.Repo, otp_app: :UrlShortener
+  use Ecto.Repo, otp_app: :url_shortener
 
   @doc """
   Dynamically loads the repository url from the

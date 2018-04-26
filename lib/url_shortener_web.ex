@@ -37,7 +37,7 @@ defmodule UrlShortenerWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/UrlShortener_web/templates",
+      use Phoenix.View, root: "lib/url_shortener_web/templates",
                         namespace: UrlShortenerWeb
 
       # Import convenience functions from controllers

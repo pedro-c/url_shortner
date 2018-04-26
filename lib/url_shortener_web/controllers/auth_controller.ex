@@ -62,7 +62,7 @@ defmodule UrlShortenerWeb.AuthController do
   end
 
   defp github do
-    Application.get_env :UrlShortener, :github_api
+    Application.get_env :url_shortener, :github_api
   end
 
   defp get_user_from_github_id(github_id) do

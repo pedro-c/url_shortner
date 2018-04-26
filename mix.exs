@@ -3,7 +3,7 @@ defmodule UrlShortener.Mixfile do
 
   def project do
     [
-      app: :UrlShortener,
+      app: :url_shortener,
       version: "0.0.1",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
@@ -16,7 +16,7 @@ defmodule UrlShortener.Mixfile do
         "coveralls.post": :test
       ],
       name: "phl.ink",
-      source_url: "https://github.com/chrismcg/UrlShortener",
+      source_url: "https://github.com/chrismcg/url_shortener",
       homepage_url: "http://phl.ink",
       aliases: aliases(),
       deps: deps()

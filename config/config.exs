@@ -6,11 +6,11 @@
 use Mix.Config
 
 # General application configuration
-config :UrlShortener,
+config :url_shortener,
   ecto_repos: [UrlShortener.Repo]
 
 # Configures the endpoint
-config :UrlShortener, UrlShortenerWeb.Endpoint,
+config :url_shortener, UrlShortenerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "HOHPGn11S+1dDx+zMcOye6TFICJKxTEwQRTCfHLDmXrxt2DLanXQdvEIwyxIESFw",
   render_errors: [view: UrlShortenerWeb.ErrorView, accepts: ~w(html json)],

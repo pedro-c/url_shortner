@@ -2,7 +2,7 @@ defmodule UrlShortener.Cache.Mapper do
   @moduledoc """
   Maps the shortcode to the pid of the process that's caching the URL to
   redirect to.
-  use GenServer
+
   Creates a new cache process if it can't find one for the shortcode in its
   internal state.
 
