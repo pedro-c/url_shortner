@@ -1,6 +1,8 @@
 run.config:
   # elixir runtime
   engine: elixir
+  extra_packages:
+    - nodejs
 
   # we need nodejs in development
   # ensure inotify exists for hot-code reloading
@@ -10,15 +12,23 @@ run.config:
 
   # cache node_modules
   cache_dirs:
-    - node_modules
+    - assets/node_modules
 
   # add node_module bins to the $PATH
   extra_path_dirs:
-    - node_modules/.bin
+    - assets/node_modules/.bin
 
   # enable the filesystem watcher
   fs_watch: true
 
+deploy.config:
+  extra_steps:
+    - mix deps.get 
+    - cd assets && npm install
+
 # add postgres as a data component
 data.db:
   image: nanobox/postgresql
+
+web.site:
+  start: node-start mix phoenix.server
