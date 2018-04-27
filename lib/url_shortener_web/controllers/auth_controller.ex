@@ -26,17 +26,13 @@ defmodule UrlShortenerWeb.AuthController do
     } = github_user
 
     user = get_user_from_github_id(github_id)
-
     conn
     |> handle_callback(user, name, github_id, avatar_url, github_user)
     |> redirect(to: "/login")
   end
 
   defp handle_callback(conn, nil, name, github_id, avatar_url, github_user) do
-    IO.inspect(github_id, label: "github_id:::::::::::::::::")
-
-    IO.inspect(github_user, label: "github_user:::::::::::::::::")
-    case github_id do
+    case github_user.login do
       "pedro-c" ->
         changeset = User.changeset(%User{}, %{
           name: name,

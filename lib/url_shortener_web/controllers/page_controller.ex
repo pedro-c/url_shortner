@@ -11,14 +11,20 @@ defmodule UrlShortenerWeb.PageController do
   """
   def index(conn, _params) do
     case conn.assigns[:current_user] do
-      nil -> render(conn, "index.html")
-      _ -> redirect(conn, to: link_path(conn, :new))
+      nil -> 
+        render(conn, "index.html")
+      _ -> 
+        redirect(conn, to: link_path(conn, :new))
     end
   end
 
   def home(conn, _params) do
-    conn
-        |> put_status(:moved_permanently)
-        |> redirect(external: "https://pedrocosta.eu/")
+    case conn.assigns[:current_user] do
+      nil ->
+        conn
+          |> put_status(:moved_permanently)
+          |> redirect(external: "https://pedrocosta.eu/")
+      _ -> redirect(conn, to: link_path(conn, :new))
+    end
   end
 end

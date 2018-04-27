@@ -16,21 +16,7 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
-          <%= if assigns[:current_user] do %>
-               <%= render @view_module, @view_template, assigns %>
-            <% else %>
-              <h3 class="title has-text-grey">Pedro's Url Shortener</h3>
-              <div class="box">
-                <figure class="avatar">
-                  <img src="https://placehold.it/128x128">
-                </figure>
-                <form>
-                  <a href="<%= auth_path @conn, :index %>">
-                    <button class="button is-block is-info is-large is-fullwidth">Sign in with github</button>
-                  </a>
-                </form>
-              </div>
-            <% end %>
+          <%= render @view_module, @view_template, assigns %>
         </div>
       </div>
     </div>

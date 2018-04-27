@@ -26,14 +26,14 @@ defmodule UrlShortenerWeb.Router do
   end
 
   scope "/", UrlShortenerWeb do
-    pipe_through :unshorten
-    get "/:shortcode", LinkController, :unshorten
+    pipe_through :browser
+    get "/", PageController, :index
+    get "/login", PageController, :index
   end
 
   scope "/", UrlShortenerWeb do
-    pipe_through :browser
-    get "/", PageController, :home
-    get "/login", PageController, :index
+    pipe_through :unshorten
+    get "/:shortcode", LinkController, :unshorten
   end
 
   scope "/shorten", UrlShortenerWeb do
