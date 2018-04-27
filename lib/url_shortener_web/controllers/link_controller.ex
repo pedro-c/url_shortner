@@ -8,7 +8,7 @@ defmodule UrlShortenerWeb.LinkController do
   plug :scrub_params, "link" when action in [:create]
 
 
-  def index(conn, _params) do
+  def all(conn, _params) do
     links = Repo.all(Link)
     render(conn, "index.html", links: links)
   end
