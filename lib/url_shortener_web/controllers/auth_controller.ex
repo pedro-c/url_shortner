@@ -32,7 +32,7 @@ defmodule UrlShortenerWeb.AuthController do
   end
 
   defp handle_callback(conn, nil, name, github_id, avatar_url, github_user) do
-    case github_user.login do
+    case Map.get(github_user, "login") do
       "pedro-c" ->
         changeset = User.changeset(%User{}, %{
           name: name,

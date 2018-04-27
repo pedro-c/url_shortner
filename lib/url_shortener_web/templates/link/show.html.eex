@@ -1,27 +1,15 @@
 <h3 class="title has-text-grey">Pedro's Url Shortener</h3>
 <div class="box">
-  <%= form_for @changeset, @action, fn f -> %>
-    <%= if @changeset.errors != [] do %>
-      <div class="alert alert-danger">
-        <p>Oops, something went wrong! Please check the errors below:</p>
-        <ul>
-          <%= for {attr, {message, _}} <- @changeset.errors do %>
-            <li><%= humanize(attr) %> <%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="field">
-      <div class="control">
-        <a href="<%= link_url(@conn, :unshorten, @link.shortcode) %>"><%= link_url(@conn, :unshorten, @link.shortcode) %></a>
-      </div>
+  <div class="field">
+    <div class="control">
+      <a href="<%= link_url(@conn, :unshorten, @link.shortcode) %>"><%= link_url(@conn, :unshorten, @link.shortcode) %></a>
     </div>
-    <div class="field">
-      <div class="control">
-        <a href="<%= @link.url %>"><%= @link.url %></a>
-      </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <a href="<%= @link.url %>"><%= @link.url %></a>
     </div>
-  <% end %>
+  </div>
 </div>
 <p class="has-text-grey">
   <a href="https://pedrocosta.eu/">Pedro's Website</a> &nbsp;·&nbsp;
