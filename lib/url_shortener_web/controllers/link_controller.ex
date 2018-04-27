@@ -7,6 +7,13 @@ defmodule UrlShortenerWeb.LinkController do
 
   plug :scrub_params, "link" when action in [:create]
 
+
+  def index(conn, _params) do
+    links = Repo.all(Link)
+    render(conn, "index.html", links: links)
+  end
+
+
   @doc """
   Display form for user to enter a URL to shorten
   """
@@ -91,5 +98,13 @@ defmodule UrlShortenerWeb.LinkController do
 
   defp link_from_url(url) do
     Repo.one(from l in Link, where: l.url == ^url)
+  end
+
+  def delete(conn, %{"id" => id}) do
+
+    Repo.delete(Repo.get!(Link, id))
+
+    conn
+    |> redirect(to: link_path(conn, :index))
   end
 end

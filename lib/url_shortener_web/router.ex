@@ -32,12 +32,14 @@ defmodule UrlShortenerWeb.Router do
 
   scope "/", UrlShortenerWeb do
     pipe_through :browser
-    get "/", PageController, :index
+    get "/", PageController, :home
+    get "/login", PageController, :index
   end
 
   scope "/shorten", UrlShortenerWeb do
     pipe_through [:browser, :authentication]
 
+    get "/all", LinkController, :index
     get "/new", LinkController, :new
     get "/:id", LinkController, :show
     post "/", LinkController, :create

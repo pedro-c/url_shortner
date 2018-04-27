@@ -15,8 +15,8 @@ use Mix.Config
 # which you typically run after static files are built.
 config :url_shortener, UrlShortenerWeb.Endpoint,
   load_from_system_env: true,
-  https: [port: 8080],
-  url: [host: "urlshortener.nanoapp.io", port: 80],
+  http: [port: 8080],
+  url: [host: "pdrcst.eu", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production

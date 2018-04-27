@@ -15,4 +15,10 @@ defmodule UrlShortenerWeb.PageController do
       _ -> redirect(conn, to: link_path(conn, :new))
     end
   end
+
+  def home(conn, _params) do
+    conn
+        |> put_status(:moved_permanently)
+        |> redirect(external: "https://pedrocosta.eu/")
+  end
 end

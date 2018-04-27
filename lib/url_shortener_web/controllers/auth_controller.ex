@@ -29,23 +29,34 @@ defmodule UrlShortenerWeb.AuthController do
 
     conn
     |> handle_callback(user, name, github_id, avatar_url, github_user)
-    |> redirect(to: "/")
+    |> redirect(to: "/login")
   end
 
   defp handle_callback(conn, nil, name, github_id, avatar_url, github_user) do
-    changeset = User.changeset(%User{}, %{
-      name: name,
-      github_id: github_id,
-      avatar_url: avatar_url,
-      github_user: github_user
-    })
+    IO.inspect(github_id, label: "github_id:::::::::::::::::")
 
-    if changeset.valid? do
-      user = Repo.insert!(changeset)
-      put_user_in_session(conn, user)
-    else
-      conn
-      |> put_flash(:error, "Couldn't login with GitHub :(")
+    IO.inspect(github_user, label: "github_user:::::::::::::::::")
+    case github_id do
+      "pedro-c" ->
+        changeset = User.changeset(%User{}, %{
+          name: name,
+          github_id: github_id,
+          avatar_url: avatar_url,
+          github_user: github_user
+        })
+    
+        if changeset.valid? do
+          user = Repo.insert!(changeset)
+          put_user_in_session(conn, user)
+        else
+          conn
+          |> put_flash(:error, "Couldn't login with GitHub :(")
+        end
+      _ ->
+        conn
+        |> put_flash(:error, "Not Allowed")
+        |> redirect(to: "/login")
+
     end
   end
   defp handle_callback(conn, user, _name, _github_id, _avatar_url, _github_user) do
